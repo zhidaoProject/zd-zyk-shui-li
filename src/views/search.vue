@@ -1,10 +1,10 @@
 <!--
  * @Author: JIANG
  * @Date: 2024-12-13 10:32:26
- * @LastEditTime: 2024-12-17 15:16:21
- * @LastEditors: JIANG
+ * @LastEditTime: 2026-11-03 08:57:46
+ * @LastEditors: ZHAO
  * @Description: 
- * @FilePath: \shui-li\src\views\search.vue
+ * @FilePath: \zd-zyk-shui-li\src\views\search.vue
  * 
 -->
 <template>
@@ -328,6 +328,50 @@ onMounted(() => {
 					}
                 }
             }
+	}
+}
+
+@media (max-width: 600px) {
+	.main-container{
+		width: 100%;
+		padding: 0 12px;
+		box-sizing: border-box;
+		.search-bar{
+			flex-direction: column;
+			gap: 16px;
+			margin-bottom: 20px;
+			.tabs{
+				width: 100%;
+				.tabs-item{
+					font-size: 18px;
+					flex: 1;
+					width: auto;
+					height: 50px;
+					line-height: 50px;
+				}
+			}
+			.tabs::after{
+				width: 100%;
+			}
+			.search-input{
+				width: 100%;
+				box-sizing: border-box;
+				.input{
+					flex: 1;
+					width: auto;
+				}
+				.search-btn{
+					font-size: 18px;
+					width: 90px;
+				}
+			}
+		}
+		.content-list{
+			gap: 12px;
+			.course-item{
+				width: calc(50% - 6px);
+			}
+		}
 	}
 }
 </style>

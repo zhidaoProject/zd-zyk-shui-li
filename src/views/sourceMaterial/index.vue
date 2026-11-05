@@ -1,10 +1,10 @@
 <!--
  * @Author: ZHAO
  * @Date: 2024-10-17 15:15:00
- * @LastEditTime: 2025-04-23 17:56:12
- * @LastEditors: JIANG
+ * @LastEditTime: 2026-11-03 08:55:16
+ * @LastEditors: ZHAO
  * @Description: 
- * @FilePath: \shui-li\src\views\sourceMaterial\index.vue
+ * @FilePath: \zd-zyk-shui-li\src\views\sourceMaterial\index.vue
  * 
 -->
 <template>
@@ -431,5 +431,101 @@ $maxWidth: 1320px;
     width: 100%;
     padding-bottom: 130px;
     margin-top: 65px;
+}
+
+@media (max-width: 600px) {
+    .page-box {
+        .tags-box {
+            width: 100%;
+            padding: 0 12px;
+            box-sizing: border-box;
+
+            .tags {
+                .tags-title {
+                    font-size: 18px;
+                    line-height: 50px;
+                }
+
+                .tags-list {
+                    width: 100%;
+                    height: auto;
+                    padding: 16px;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    grid-template-columns: none;
+
+                    .tags-item {
+                        font-size: 16px;
+                        height: 30px;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+
+        .search {
+            width: 100%;
+            padding: 0 12px;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+
+            .segmented {
+                width: 100%;
+                flex-wrap: wrap;
+
+                .segmented-item {
+                    width: 25%;
+                    font-size: 18px;
+                    height: 50px;
+                    line-height: 50px;
+                }
+            }
+
+            :deep(.el-input) {
+                width: 100% !important;
+                margin-left: 0;
+
+                .el-input__wrapper {
+                    font-size: 16px;
+                    padding: 0 12px;
+                }
+
+                .el-input-group__append {
+                    width: 80px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .course-box {
+        width: 100%;
+        padding: 0 12px;
+        box-sizing: border-box;
+        grid-template-columns: repeat(2, calc(50% - 6px));
+        gap: 12px;
+
+        .course-item {
+            width: 100%;
+
+            .course-img-box {
+                height: auto;
+
+                .course-img {
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .page-bottom {
+        padding-bottom: 40px;
+        margin-top: 30px;
+        overflow-x: auto;
+    }
 }
 </style>

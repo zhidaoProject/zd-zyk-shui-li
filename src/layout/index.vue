@@ -1,7 +1,7 @@
 <!--
  * @Author: ZHAO
  * @Date: 2024-01-12 16:39:21
- * @LastEditTime: 2026-06-18 12:20:27
+ * @LastEditTime: 2026-11-03 08:52:35
  * @LastEditors: ZHAO
  * @Description: 
  * @FilePath: \zd-zyk-shui-li\src\layout\index.vue
@@ -35,6 +35,9 @@
                 <el-divider direction="vertical" />
                 <div class="name" @click="goRegister">注册</div>
             </div>
+            <el-icon class="menu-toggle" @click="drawerVisible = true">
+                <Menu />
+            </el-icon>
         </div>
     </div>
     <div class="tab-list">
@@ -99,6 +102,55 @@
             </template>
         </el-menu> -->
     </div>
+    <el-drawer
+        v-model="drawerVisible"
+        direction="rtl"
+        size="70%"
+        :with-header="false"
+        class="mobile-drawer"
+    >
+        <div class="drawer-logo">
+            <img
+                class="drawer-logo-img"
+                :src="logo ? logo : '/src/assets/images/logo.png'"
+            />
+        </div>
+        <el-menu
+            :default-active="defaultFullPath"
+            class="mobile-menu"
+            @select="handleDrawerSelect"
+        >
+            <template v-for="(item, index) of menuList" :key="index">
+                <el-sub-menu
+                    :index="item.path"
+                    v-if="item.children && item.children.length > 0"
+                >
+                    <template #title>
+                        <span
+                            class="drawer-submenu-title"
+                            :class="{
+                                'drawer-submenu-active': String(defaultFullPath).startsWith(
+                                    item.path
+                                )
+                            }"
+                            @click.stop="handleDrawerTop(item)"
+                            >{{ item.name }}</span
+                        >
+                    </template>
+                    <el-menu-item
+                        v-for="(chil, chilIndex) of item.children"
+                        :key="chilIndex"
+                        :index="chil.path"
+                        class="drawer-tag-item"
+                        ><span class="drawer-tag-text" v-html="chil.name"></span></el-menu-item
+                    >
+                </el-sub-menu>
+                <el-menu-item v-else :index="item.path" class="drawer-simple-item">{{
+                    item.name
+                }}</el-menu-item>
+            </template>
+        </el-menu>
+    </el-drawer>
     <router-view></router-view>
     <div class="footer">
         <div class="footer-inner">
@@ -193,6 +245,7 @@ const sculpture = computed(() => useUserStore().sculpture);
 import { useRouter, useRoute } from 'vue-router';
 const router = useRouter();
 const route = useRoute();
+const drawerVisible = ref(false);
 import { LoginApi } from '@/assets/api/login';
 const loginApi = new LoginApi();
 import { clearAllCoolies, COOKIE_TOKEN_KEY } from '@/utils/cookie';
@@ -370,6 +423,16 @@ function turnToPage(path: string) {
     select(path);
     // router.push(path);
 }
+// 移动端：抽屉点击带分类子项跳转（复用 turnToPage 的 ?index=0 / knowledge 逻辑）
+const handleDrawerSelect = (MenuSelectEvent: any) => {
+    drawerVisible.value = false;
+    turnToPage(MenuSelectEvent);
+};
+// 移动端：点击带子菜单的顶级菜单名直接进页面（不展开），点箭头才展开 tags
+const handleDrawerTop = (item: any) => {
+    drawerVisible.value = false;
+    turnToPage(item.path);
+};
 // 页面跳转
 function select(MenuSelectEvent: any) {
     const { path } = route;
@@ -434,7 +497,8 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1291px;
+    width: 100%;
+    max-width: 1291px;
     margin: auto;
 
     .header-left {
@@ -502,6 +566,14 @@ onMounted(() => {
             .login {
                 margin-left: 5px;
             }
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            color: #333;
+            cursor: pointer;
+            margin-left: 16px;
         }
     }
 }
@@ -686,6 +758,161 @@ onMounted(() => {
             margin: 0 auto;
             line-height: 30px;
             text-align: left;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        width: 100%;
+        height: 60px;
+        padding: 0 12px;
+        box-sizing: border-box;
+
+        .header-left {
+            margin-right: 0;
+
+            .hearer-logo {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+            }
+
+            .hearer-title {
+                width: auto;
+                padding-top: 0;
+
+                .title {
+                    font-size: 18px;
+                    line-height: 22px;
+                    letter-spacing: 2px;
+                }
+
+                .tips {
+                    display: none;
+                }
+            }
+        }
+
+        .header-right {
+            .hearer-user {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 24px;
+            }
+        }
+    }
+
+    .tab-list {
+        display: none;
+    }
+
+    .top {
+        flex-direction: column;
+        padding: 0 16px 20px;
+    }
+
+    .footer-inner {
+        .footer-left,
+        .footer-right {
+            width: 100%;
+        }
+
+        .footer-left .ve-link {
+            width: 50%;
+            margin-right: 0;
+        }
+
+        .footer-right {
+            padding-top: 20px;
+        }
+
+        .footer-copyright {
+            padding: 18px 16px;
+
+            p {
+                display: block;
+                margin: 0 0 8px;
+            }
+        }
+    }
+}
+</style>
+
+<style lang="scss">
+.mobile-drawer .el-drawer__body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mobile-drawer .drawer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-drawer .drawer-logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.mobile-drawer .mobile-menu {
+    flex: 1;
+    border-right: none;
+    padding-bottom: 24px;
+
+    .el-menu-item,
+    .el-sub-menu__title {
+        font-size: 16px;
+        height: 50px;
+        line-height: 50px;
+        color: #333;
+
+        &.is-active {
+            color: #2e90fa;
+            font-weight: bold;
+        }
+    }
+
+    .drawer-submenu-title {
+        font-weight: normal;
+
+        &.drawer-submenu-active {
+            color: #2e90fa;
+            font-weight: bold;
+        }
+    }
+
+    .drawer-tag-item {
+        height: 44px;
+        line-height: 44px;
+        margin: 8px 14px;
+        padding: 0 16px;
+        border-radius: 22px;
+        background: #f5f7fc;
+
+        .drawer-tag-text {
+            font-size: 15px;
+        }
+
+        &.is-active {
+            background: #2e90fa;
+            color: #fff;
+        }
+    }
+
+    .drawer-simple-item {
+        &.is-active {
+            color: #2e90fa;
+            font-weight: bold;
         }
     }
 }

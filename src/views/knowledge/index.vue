@@ -1,7 +1,7 @@
 <!--
  * @Author: JIANG
  * @Date: 2025-07-31 14:37:09
- * @LastEditTime: 2026-06-17 12:49:05
+ * @LastEditTime: 2026-11-03 08:55:52
  * @LastEditors: ZHAO
  * @Description: 
  * @FilePath: \zd-zyk-shui-li\src\views\knowledge\index.vue
@@ -276,5 +276,76 @@ const left = () => {
 		}
 	}
 
+}
+
+@media (max-width: 600px) {
+	.page-box {
+		height: auto;
+		padding-bottom: 40px;
+
+		.btn-box {
+			margin-top: 40px;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+
+			.btn1 {
+				width: calc(100% - 32px);
+				height: 280px;
+				box-sizing: border-box;
+				margin-right: 0;
+
+				.title {
+					font-size: 26px;
+					letter-spacing: 4px;
+					margin-bottom: 160px;
+				}
+
+				.more {
+					font-size: 18px;
+				}
+			}
+
+			.btn2 {
+				width: calc(100% - 32px);
+				height: 280px;
+				box-sizing: border-box;
+				padding-left: 20px;
+				padding-top: 20px;
+
+				.title {
+					font-size: 26px;
+					letter-spacing: 4px;
+				}
+
+				.arrows-box {
+					right: 20px;
+
+					.left-arrow,
+					.right-arrow {
+						width: 32px;
+						height: 32px;
+						line-height: 36px;
+					}
+				}
+
+				.content {
+					margin-top: 18px;
+
+					.move-box {
+						.item {
+							margin-right: 20px;
+
+							.img-box {
+								width: 160px;
+								height: 160px;
+								border-width: 4px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 </style>

@@ -1,10 +1,10 @@
 <!--
  * @Author: ZHAO
  * @Date: 2024-10-14 10:11:10
- * @LastEditTime: 2025-10-14 10:28:49
+ * @LastEditTime: 2026-11-03 08:54:04
  * @LastEditors: ZHAO
  * @Description: 
- * @FilePath: \shui-li\src\views\HomeView.vue
+ * @FilePath: \zd-zyk-shui-li\src\views\HomeView.vue
  * 
 -->
 <template>
@@ -1222,6 +1222,323 @@ onMounted(() => {
     font-size: 20px;
     color: #2E90FA;
     font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .homePage {
+        .banner-box {
+            height: 220px;
+            margin-top: 0;
+
+            .banner-item {
+                height: 220px;
+            }
+
+            :deep(.el-carousel__arrow) {
+                top: 90px;
+                width: 34px;
+                height: 34px;
+            }
+        }
+    }
+
+    .search-box {
+        width: calc(100% - 24px);
+        height: 48px;
+        padding-left: 14px;
+        box-sizing: border-box;
+        margin-top: -10px;
+
+        .search-input {
+            width: 82%;
+            height: 42px;
+        }
+
+        .icon {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+    }
+
+    .wrap1 {
+        height: auto;
+        background-size: cover;
+        background-position: center;
+
+        .test-user {
+            width: 100%;
+            height: auto;
+            padding: 18px 8px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+
+            .user-item {
+                img {
+                    height: 56px;
+                }
+
+                .item-box {
+                    width: 84px;
+                }
+            }
+
+            &::after {
+                width: 90%;
+                left: 5%;
+            }
+        }
+
+        .intro {
+            width: 100%;
+            flex-direction: column;
+            padding: 0 16px;
+            box-sizing: border-box;
+
+            .data-img {
+                width: 100%;
+                height: auto;
+                margin: 0 0 16px;
+            }
+
+            .text-box {
+                width: 100%;
+                height: auto;
+
+                .data-text {
+                    height: auto;
+                    font-size: 16px;
+                    line-height: 30px;
+                }
+            }
+        }
+
+        .data-statistics {
+            width: 100%;
+            height: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px 30px;
+            font-size: 22px;
+
+            .statistics-item {
+                .icon-box {
+                    width: 36px;
+                    height: 36px;
+
+                    i {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+
+        .data-statistics-box {
+            width: 100%;
+            height: auto;
+            min-height: 260px;
+            background-size: cover;
+            background-position: center;
+
+            .data-wrap {
+                width: 100%;
+                height: auto;
+
+                .news {
+                    height: 220px;
+
+                    .nes-item .content {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .course-list {
+            width: 100%;
+            padding: 0 16px;
+            box-sizing: border-box;
+            gap: 12px;
+
+            .course-item {
+                width: calc(50% - 6px);
+                height: auto;
+
+                .img-item-box {
+                    width: 100%;
+                    height: auto;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .talent-training-program {
+            width: 100%;
+            height: auto;
+            flex-direction: column;
+            padding: 20px 16px;
+            box-sizing: border-box;
+            justify-content: flex-start;
+
+            .left {
+                width: 100%;
+                height: auto;
+                font-size: 16px;
+                line-height: 28px;
+                -webkit-line-clamp: unset;
+            }
+
+            .right {
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .politics-box {
+        height: 160px;
+
+        .t1 {
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .question-bank {
+        height: auto;
+        padding: 24px 0;
+
+        .question-bank-box {
+            width: 100%;
+            height: 300px;
+
+            .question-bank-item {
+                width: 25%;
+
+                .item-text-box {
+                    padding: 20px 0 0 8px;
+
+                    img {
+                        width: 96%;
+                        height: auto;
+                        margin-right: 0;
+                    }
+
+                    i {
+                        font-size: 22px;
+                        margin-left: 18px;
+                    }
+                }
+            }
+
+            .is-active {
+                width: 40%;
+
+                .item-text-box {
+                    padding: 12px;
+                    display: block;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        margin: 0;
+                    }
+
+                    i {
+                        font-size: 22px;
+                        margin: 8px 0 0 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    .vr {
+        height: 160px;
+
+        .more-btn {
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .atlas {
+        .atlas-content {
+            width: 100%;
+            flex-wrap: wrap;
+            padding: 0 16px;
+            box-sizing: border-box;
+            gap: 10px;
+
+            .atlas-item {
+                width: calc(50% - 5px);
+                height: 190px;
+                margin-bottom: 20px;
+
+                .title-box {
+                    height: 86px;
+                    padding: 14px 0 0 16px;
+
+                    > :nth-child(1) {
+                        font-size: 20px;
+                        width: 100%;
+                    }
+
+                    > :nth-child(2) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .team-box {
+        .team-wrap {
+            width: 100%;
+            padding: 0 16px;
+            box-sizing: border-box;
+
+            .team-content {
+                .team-tag1,
+                .team-tag2,
+                .team-tag3 {
+                    width: 100%;
+                    height: 34px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    margin-bottom: 24px;
+                }
+
+                .school-box,
+                .unit-box {
+                    .school-item {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    .little-title {
+        .title-box {
+            font-size: 26px;
+        }
+
+        .line-l,
+        .line-r {
+            width: 46px;
+        }
+    }
 }
 
 ::-webkit-scrollbar {
