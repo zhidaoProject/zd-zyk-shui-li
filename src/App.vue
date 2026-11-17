@@ -8,11 +8,13 @@
  * 
 -->
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView } from "vue-router";   
+import FloatAgent from "./views/compontents/floatAgent.vue";
 </script>
 
 <template>
  <RouterView />
+ <FloatAgent />
 </template>
 
 <style scoped></style>

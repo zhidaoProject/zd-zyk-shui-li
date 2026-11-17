@@ -1,7 +1,7 @@
 <!--
  * @Author: ZHAO
  * @Date: 2024-10-14 10:11:10
- * @LastEditTime: 2026-11-03 08:54:04
+ * @LastEditTime: 2026-11-17 22:40:40
  * @LastEditors: ZHAO
  * @Description: 
  * @FilePath: \zd-zyk-shui-li\src\views\HomeView.vue
@@ -282,7 +282,14 @@
             </div>
         </div>
     </div>
-
+   <div class="atlas">
+        <div class="little-title">
+            <div class="line-l"></div>
+            <div class="title-box">知识图谱</div>
+            <div class="line-r"></div>
+        </div>
+         <knowledgeAll></knowledgeAll>
+    </div>
     <div class="team-box">
         <div class="little-title">
             <div class="line-l"></div>
@@ -326,6 +333,7 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted, getCurrentInstance } from 'vue';
+import knowledgeAll from '@/views/compontents/knowledgeAll.vue';
 import {getNewsList} from "@/assets/api/common"
 const { proxy } = getCurrentInstance();
 import { useRouter } from 'vue-router';
